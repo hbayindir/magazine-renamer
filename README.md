@@ -13,3 +13,5 @@ The tool should ignore the files it doesn't know, and shouldn't re-match already
 
 ## Notes
 The tool is coded quickly, so it's neither innovative, nor clever, nor optimized. I may clean the code and polish things as I use it and new features though.
+
+The code is developed in Eclipse with PyDev, and project files are there for you to import and play.
