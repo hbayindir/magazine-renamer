@@ -75,7 +75,7 @@ def monthStringToNumber(monthString):
         return '11'
         
     elif monthString.casefold() == 'dec'.casefold() or monthString.casefold() == 'december'.casefold():
-        return '02'
+        return '12'
     
     else:
         return '00'
@@ -106,7 +106,7 @@ if __name__ == '__main__':
     verbosityGroup.add_argument ('-q', '--quiet', help='Do not print anything to console (overrides verbose).', action='store_true', default=False)
 
     # Version always comes last.
-    argumentParser.add_argument ('-V', '--version', help='Print ' + argumentParser.prog + ' version and exit.', action='version', version=argumentParser.prog + ' version 0.0.1')    
+    argumentParser.add_argument ('-V', '--version', help='Print ' + argumentParser.prog + ' version and exit.', action='version', version=argumentParser.prog + ' version 0.0.2')    
 
     arguments = argumentParser.parse_args()
 
