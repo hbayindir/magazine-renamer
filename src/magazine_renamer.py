@@ -95,7 +95,7 @@ if __name__ == '__main__':
     # Let's parse some arguments.
     argument_parser = argparse.ArgumentParser()
 
-    argument_parser.add_argument ('file_to_work_on', metavar='FILE', help='File(s) to be renamed.', type=str, nargs='+')
+    argument_parser.add_argument ('file', metavar='FILE', help='File(s) to be renamed.', type=str, nargs='+')
     
     argument_parser.add_argument ('-s', '--simulate', help='Do not actually rename the files, but show actions and quit.', action='store_true', default=False)
     
@@ -130,7 +130,7 @@ if __name__ == '__main__':
         local_logger.debug('Logger setup completed.')
         local_logger.debug('%s is starting.', sys.argv[0])
     except IOError as exception:
-        print ('Something about disk I/O went bad: ' + str(exception), file=sys.stderr)
+        print ('Something about disk I/O went bad: ' + str(exception))
         sys.exit(1)
     
     # Let's print some information about what we're going to do.
