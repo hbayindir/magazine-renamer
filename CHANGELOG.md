@@ -2,6 +2,14 @@
 
 **Note:** Please add newest entries on top. Use ISO date format YYYY-MM-DD and markdown formatting.
 
+## 2022-04-27
+
+- Bump version to `0.0.4`.
+- Refactor `month_string_to_number` function.
+- Add documentation to `month_string_to_number` function.
+- Refactor `convert_edition_string` function.
+- Add documentation to `convert_edition_string` function.
+
 ## 2022-04-26
 
 - Bump version to `0.0.3`.

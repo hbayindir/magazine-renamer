@@ -39,56 +39,38 @@ LOGFILE_PATH = None
 @summary: A dead-simple, naive short month name to month number conversion function.
 @warning: This function is no way optimized.
 '''
+
+month_number_dictionary = dict()
+month_number_dictionary['jan'.casefold()] = '01'
+month_number_dictionary['feb'.casefold()] = '02'
+month_number_dictionary['mar'.casefold()] = '03'
+month_number_dictionary['apr'.casefold()] = '04'
+month_number_dictionary['may'.casefold()] = '05'
+month_number_dictionary['jun'.casefold()] = '06'
+month_number_dictionary['jul'.casefold()] = '07'
+month_number_dictionary['aug'.casefold()] = '08'
+month_number_dictionary['sep'.casefold()] = '09'
+month_number_dictionary['oct'.casefold()] = '10'
+month_number_dictionary['nov'.casefold()] = '11'
+month_number_dictionary['dec'.casefold()] = '12'
+
+edition_dictionary = dict()
+edition_dictionary['INT'.casefold()] = 'International'
+edition_dictionary['NA'.casefold()] = 'North America'
+
 def month_string_to_number(month_string):
-    if month_string.casefold() == 'jan'.casefold() or month_string.casefold() == 'january'.casefold():
-        return '01'
+    '''
+    @summary: Get a month name as a string, get its month number back.
+    @warning: Case and language insensitive.
+    '''
+    return month_number_dictionary.get(month_string[0:3].casefold(), '00')
 
-    elif month_string.casefold() == 'feb'.casefold() or month_string.casefold() == 'february'.casefold():
-        return '02'
-    
-    elif month_string.casefold() == 'mar'.casefold() or month_string.casefold() == 'march'.casefold():
-        return '03'    
-    
-    elif month_string.casefold() == 'apr'.casefold() or month_string.casefold() == 'april'.casefold():
-        return '04'
-        
-    elif month_string.casefold() == 'may'.casefold():
-        return '05'
-        
-    elif month_string.casefold() == 'jun'.casefold() or month_string.casefold() == 'june'.casefold():
-        return '06'
-        
-    elif month_string.casefold() == 'jul'.casefold() or month_string.casefold() == 'july'.casefold():
-        return '07'
-        
-    elif month_string.casefold() == 'aug'.casefold() or month_string.casefold() == 'august'.casefold():
-        return '08'
-        
-    elif month_string.casefold() == 'sep'.casefold() or month_string.casefold() == 'september'.casefold():
-        return '09'
-        
-    elif month_string.casefold() == 'oct'.casefold() or month_string.casefold() == 'october'.casefold():
-        return '10'
-        
-    elif month_string.casefold() == 'nov'.casefold() or month_string.casefold() == 'november'.casefold():
-        return '11'
-        
-    elif month_string.casefold() == 'dec'.casefold() or month_string.casefold() == 'december'.casefold():
-        return '12'
-    
-    else:
-        return '00'
-
-'''
-@summary: A dead-simple, naive short edition to human readable edition string conversion function.
-@warning: This function is no way optimized.  
-'''
 def convert_edition_string(edition_string):
-    if edition_string.casefold() == 'INT'.casefold():
-        return 'International'
-    
-    elif edition_string.casefold() == 'NA'.casefold():
-        return 'North America'
+    '''
+    @summary: A simple, short edition to human readable edition string conversion function.
+    @change: 20220427 - Can handle other editions as well.
+    '''
+    return edition_dictionary.get(edition_string, 'Other')
 
 if __name__ == '__main__':
 
