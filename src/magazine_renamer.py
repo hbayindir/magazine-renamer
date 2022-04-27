@@ -87,7 +87,7 @@ if __name__ == '__main__':
     verbosity_group.add_argument ('-q', '--quiet', help='Do not print anything to console (overrides verbose).', action='store_true', default=False)
 
     # Version always comes last.
-    argument_parser.add_argument ('-V', '--version', help='Print ' + argument_parser.prog + ' version and exit.', action='version', version=argument_parser.prog + ' version 0.0.3')    
+    argument_parser.add_argument ('-V', '--version', help='Print ' + argument_parser.prog + ' version and exit.', action='version', version=argument_parser.prog + ' version 0.0.4')    
 
     arguments = argument_parser.parse_args()
 
