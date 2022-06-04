@@ -121,8 +121,8 @@ if __name__ == '__main__':
     local_logger.debug('Simulation state is %s', str(arguments.simulate))
     
     # We're going to match some regular expressions. We'll compile them here for conciseness.
-    regex_ieee_spectrum_v_1 = re.compile('Spectrum_[\d]{5}_[A-Z][a-z]{2}_[\d]{4}\.PDF')
-    regex_ieee_spectrum_v_2 = re.compile('[\d]{2}_Spectrum_[\d]{4}\.pdf')
+    regex_ieee_spectrum_v1 = re.compile('Spectrum_[\d]{5}_[A-Z][a-z]{2}_[\d]{4}\.PDF')
+    regex_ieee_spectrum_v2 = re.compile('[\d]{2}_Spectrum_[\d]{4}\.pdf')
     regex_ieee_spectrum_v2a = re.compile('[\d]{2}_Spectrum_[\d]{4}[_][A-Z]{2,3}\.pdf')
     regex_ieee_spectrum_v2b = re.compile('[\d]{2}_Spectrum_[\d]{4}[\.][A-Z]{2,3}\.pdf')
     regex_ieee_spectrum_v2c = re.compile('[\d]{2}_Spectrum_[\d]{2}\.pdf')
@@ -151,7 +151,7 @@ if __name__ == '__main__':
         local_logger.debug('File name is \'%s\', with extension \'%s\'', file_name, file_extension)
         
         #IEEE Spectrum, V1.
-        if regex_ieee_spectrum_v_1.match(file_to_rename):
+        if regex_ieee_spectrum_v1.match(file_to_rename):
             local_logger.info('%s is an IEEE Spectrum Magazine file, with V1 format.', file_to_rename)
             
             # First divide file name into its parts via split.
@@ -168,7 +168,7 @@ if __name__ == '__main__':
             new_file_name = 'IEEE Spectrum ' + file_name_parts[3] + '-' + month_number + file_extension.lower()
             local_logger.info('File will be renamed to \'%s\'.', new_file_name)
                     
-        elif regex_ieee_spectrum_v_2.match(file_to_rename):
+        elif regex_ieee_spectrum_v2.match(file_to_rename):
             local_logger.info('%s is an IEEE Spectrum Magazine file, with V2 format.', file_to_rename)
             
             # This one is actually easy, since we're just going to rearrange some fields together.

@@ -5,6 +5,7 @@
 ## 2022-06-04
 
 - fix: Correct logging messages corrupted by overzelaous refactoring.
+- fluff: Correct a couple of variable naming issues.
 - code: Bump version to 0.0.5.
 
 ## 2022-04-27
