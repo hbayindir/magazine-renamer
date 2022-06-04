@@ -138,7 +138,7 @@ if __name__ == '__main__':
     
     # Let's start on working files. Get them one by one, and test against RegEx rules.
     for file_to_work_on in arguments.file:
-        local_logger.debug('Working on file  ' + str(file_to_work_on) + '.')
+        local_logger.debug('Working on file  %s.', str(file_to_work_on))
         
         # Need to divide the path and file itself before diving deeper, and need to preserve that path for merging later.
         if os.path.isfile(file_to_work_on) == False:

@@ -6,6 +6,7 @@
 
 - fix: Correct logging messages corrupted by overzelaous refactoring.
 - fluff: Correct a couple of variable naming issues.
+- fluff: Convert a rogue logging line to f-strings.
 - code: Bump version to 0.0.5.
 
 ## 2022-04-27
