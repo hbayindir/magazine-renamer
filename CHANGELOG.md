@@ -2,6 +2,11 @@
 
 **Note:** Please add newest entries on top. Use ISO date format YYYY-MM-DD and markdown formatting.
 
+## 2022-06-04
+
+- fix: Correct logging messages corrupted by overzelaous refactoring.
+- code: Bump version to 0.0.5.
+
 ## 2022-04-27
 
 - Bump version to `0.0.4`.

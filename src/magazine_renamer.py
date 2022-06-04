@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 '''
-Magazine Renamer - A RegEx based file_to_work_on renamer for IEEE Magazines and more.
+Magazine Renamer - A RegEx based file renamer for IEEE Magazines and more.
 Copyright (C) 2022  Hakan Bayindir
 
 This program is free software: you can redistribute it and/or modify
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     verbosity_group.add_argument ('-q', '--quiet', help='Do not print anything to console (overrides verbose).', action='store_true', default=False)
 
     # Version always comes last.
-    argument_parser.add_argument ('-V', '--version', help='Print ' + argument_parser.prog + ' version and exit.', action='version', version=argument_parser.prog + ' version 0.0.4')    
+    argument_parser.add_argument ('-V', '--version', help='Print ' + argument_parser.prog + ' version and exit.', action='version', version=argument_parser.prog + ' version 0.0.5')    
 
     arguments = argument_parser.parse_args()
 
@@ -117,7 +117,7 @@ if __name__ == '__main__':
     
     # Let's print some information about what we're going to do.
     local_logger.debug('Files to rename are: %s', str(arguments.file))
-    local_logger.debug('Total file_to_work_on count: %s', str(len(arguments.file)))
+    local_logger.debug('Total file count: %s', str(len(arguments.file)))
     local_logger.debug('Simulation state is %s', str(arguments.simulate))
     
     # We're going to match some regular expressions. We'll compile them here for conciseness.
@@ -133,16 +133,16 @@ if __name__ == '__main__':
     regex_ieee_computational_intelligence_v2 = re.compile('ieee_computationalintelligence_[0-9]{6}\.pdf')
     regex_ieee_potentials_v1 = re.compile('POT_[\d]{8}_[A-Z][a-z]{2}_[\d]{4}\.PDF')
     
-    # Just allocate a variable for a new file_to_work_on name.
+    # Just allocate a variable for a new file name.
     new_file_name = None
     
     # Let's start on working files. Get them one by one, and test against RegEx rules.
     for file_to_work_on in arguments.file:
-        local_logger.debug('Working on file_to_work_on  ' + str(file_to_work_on) + '.')
+        local_logger.debug('Working on file  ' + str(file_to_work_on) + '.')
         
-        # Need to divide the path and file_to_work_on itself before diving deeper, and need to preserve that path for merging later.
+        # Need to divide the path and file itself before diving deeper, and need to preserve that path for merging later.
         if os.path.isfile(file_to_work_on) == False:
-            local_logger.debug('Path ' + file_to_work_on + ' is not a file_to_work_on, skipping.')
+            local_logger.debug('Path ' + file_to_work_on + ' is not a file, skipping.')
             continue
         
         (file_path, file_to_rename) = os.path.split(file_to_work_on)
@@ -152,9 +152,9 @@ if __name__ == '__main__':
         
         #IEEE Spectrum, V1.
         if regex_ieee_spectrum_v_1.match(file_to_rename):
-            local_logger.info('%s is an IEEE Spectrum Magazine file_to_work_on, with V1 format.', file_to_rename)
+            local_logger.info('%s is an IEEE Spectrum Magazine file, with V1 format.', file_to_rename)
             
-            # First divide file_to_work_on name into its parts via split.
+            # First divide file name into its parts via split.
             file_name_parts = file_name.split('_')
             
             local_logger.debug('Month to convert is %s.', file_name_parts[2])
@@ -169,7 +169,7 @@ if __name__ == '__main__':
             local_logger.info('File will be renamed to \'%s\'.', new_file_name)
                     
         elif regex_ieee_spectrum_v_2.match(file_to_rename):
-            local_logger.info('%s is an IEEE Spectrum Magazine file_to_work_on, with V2 format.', file_to_rename)
+            local_logger.info('%s is an IEEE Spectrum Magazine file, with V2 format.', file_to_rename)
             
             # This one is actually easy, since we're just going to rearrange some fields together.
             file_name_parts = file_name.split('_')
@@ -182,7 +182,7 @@ if __name__ == '__main__':
             local_logger.info('File will be renamed to \'%s\'.', new_file_name)      
             
         elif regex_ieee_spectrum_v2a.match(file_to_rename):
-            local_logger.info('%s is an IEEE Spectrum Magazine file_to_work_on, with V2A format.', file_to_rename)
+            local_logger.info('%s is an IEEE Spectrum Magazine file, with V2A format.', file_to_rename)
             
             # This is a variation on V2, but contains region information (NA for North America, INT for International).
             file_name_parts = file_name.split('_')
@@ -199,7 +199,7 @@ if __name__ == '__main__':
             local_logger.info('File will be renamed to \'%s\'.', new_file_name)
             
         elif regex_ieee_spectrum_v2b.match(file_to_rename):
-            local_logger.info('%s is an IEEE Spectrum Magazine file_to_work_on, with V2B format.', file_to_rename)
+            local_logger.info('%s is an IEEE Spectrum Magazine file, with V2B format.', file_to_rename)
             
             # This is a further variation on V2A, but contains region information after a dot (NA for North America, INT for International).
             file_name_parts = file_name.split('_')
@@ -218,7 +218,7 @@ if __name__ == '__main__':
             local_logger.info('File will be renamed to \'%s\'.', new_file_name)
         
         elif regex_ieee_spectrum_v2c.match(file_to_rename):
-            local_logger.info('%s is an IEEE Spectrum Magazine file_to_work_on, with V2C format.', file_to_rename)
+            local_logger.info('%s is an IEEE Spectrum Magazine file, with V2C format.', file_to_rename)
             
             # This is a direct variation of V2, but with two digit years.
             file_name_parts = file_name.split('_')
@@ -231,7 +231,7 @@ if __name__ == '__main__':
             local_logger.info('File will be renamed to \'%s\'.', new_file_name)
         
         elif regex_ieee_the_institute_v1.match(file_to_rename):
-            local_logger.info('%s is an IEEE The Institute Magazine file_to_work_on, with V1 format.', file_to_rename)
+            local_logger.info('%s is an IEEE The Institute Magazine file, with V1 format.', file_to_rename)
             
             # This format has month and year concatenated, so we need to make some harder-coded extractions.
             # Get the year and month only, we know the rest.
@@ -247,7 +247,7 @@ if __name__ == '__main__':
             local_logger.info('File will be renamed to \'%s\'.', new_file_name)
             
         elif regex_ieee_the_institute_v1a.match(file_to_rename):
-            local_logger.info('%s is an IEEE The Institute Magazine file_to_work_on, with V1A format.', file_to_rename)
+            local_logger.info('%s is an IEEE The Institute Magazine file, with V1A format.', file_to_rename)
             
             # This is a better variation on V1, with better separation between month and year.
             # Get the year and month only, we know the rest.
@@ -260,7 +260,7 @@ if __name__ == '__main__':
             local_logger.info('File will be renamed to \'%s\'.', new_file_name)
         
         elif regex_ieee_the_institute_v2.match(file_to_rename):
-            local_logger.info('%s is an IEEE The Institute Magazine file_to_work_on, with V2 format.', file_to_rename)
+            local_logger.info('%s is an IEEE The Institute Magazine file, with V2 format.', file_to_rename)
             
             # This is a variation on V1A, with some changing in name casing and date format, but it can be parsed the same way.
             # Get the year and month only, we know the rest.
@@ -273,7 +273,7 @@ if __name__ == '__main__':
             local_logger.info('File will be renamed to \'%s\'.', new_file_name)
         
         elif regex_ieee_computational_intelligence_v1.match(file_to_rename):
-            local_logger.info('%s is an IEEE Computational Intelligence Magazine file_to_work_on, with V1 format.', file_to_rename)
+            local_logger.info('%s is an IEEE Computational Intelligence Magazine file, with V1 format.', file_to_rename)
             
             # This is again some very concatenated format, but it can be easily disassembled into its parts with harder-coded ways.
             month_and_year = file_name.split('_')[1]
@@ -285,7 +285,7 @@ if __name__ == '__main__':
             
         
         elif regex_ieee_computational_intelligence_v2.match(file_to_rename):
-            local_logger.info('%s is an IEEE Computational Intelligence Magazine file_to_work_on, with V2 format.', file_to_rename)
+            local_logger.info('%s is an IEEE Computational Intelligence Magazine file, with V2 format.', file_to_rename)
             
             # This is again some very concatenated format, but it can be easily disassembled into its parts with harder-coded ways.
             month_and_year = file_name.split('_')[2]
@@ -296,7 +296,7 @@ if __name__ == '__main__':
             local_logger.info('File will be renamed to \'%s\'.', new_file_name)
             
         elif regex_ieee_potentials_v1.match(file_to_rename):
-            local_logger.info('%s is an IEEE Potentials Magazine file_to_work_on, with V1 format.', file_to_rename)
+            local_logger.info('%s is an IEEE Potentials Magazine file, with V1 format.', file_to_rename)
         
             # This is again some very concatenated format, but it can be easily disassembled into its parts with harder-coded ways.
             month_and_year = file_name.split('_')[1]
@@ -306,7 +306,7 @@ if __name__ == '__main__':
             new_file_name = 'IEEE Potentials ' + file_year + '-' + file_month + file_extension.lower()
             local_logger.info('File will be renamed to \'%s\'.', new_file_name)
         else:
-            local_logger.info('%s in an unknown file_to_work_on, skipping.', file_to_rename)
+            local_logger.info('%s in an unknown file, skipping.', file_to_rename)
             continue
         
         if arguments.simulate == False:
