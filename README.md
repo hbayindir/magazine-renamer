@@ -1,5 +1,7 @@
 # Magazine Renamer
 
+**Important:** Development of this tool has been migrated to [Source Hut](https://git.sr.ht/~bayindirh/magazine-renamer), and this version is archived for avoiding broken links.
+
 ## What?
 A small tool to rename IEEE magazines and more.
 
